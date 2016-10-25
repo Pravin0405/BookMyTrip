@@ -1,0 +1,17 @@
+<body class="text-center">
+<div class="card row header">
+    <h1>Step Three</h1>
+    <div class="col-md-12">
+        <div class=" col-md-12">
+            <h3><span>{{mailContent[0].frstName}}</span><span> {{mailContent[0].lastName}}</span>
+                <span> {{mailContent[0].phno}}</span>
+                <span> will depart for</span>
+                <span>{{mailContent[0].city}}</span><span> on</span>
+                <span>{{mailContent[0].ddt|date:'dd-MM-yyyy'}}</span> and return on <span>{{mailContent[0].rdt|date:'dd-MM-yyyy'}}</span>
+            </h3></div>
+        <button value="submit" class="btn btn-success" ng-click="send()" ui-sref="app.book-my-ticket.step-one">
+            Send Email
+        </button>
+    </div>
+</div>
+</body>

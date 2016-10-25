@@ -1,0 +1,78 @@
+<body>
+<div class="card">
+    <h1>Step Two</h1>
+    <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="labelText">City select: </label>
+            </div>
+            <div class="col-md-6">
+                <p>
+                    <ui-select ng-model="pass.city" name="city" ng-required>
+                        <ui-select-match placeholder="Select a City in the list...">{{$select.selected}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="city in countries | filter: $select.search">
+                            <span ng-bind-html="city| highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                    <span class="text-danger"
+                          ng-show="userForm.city.$touched && userForm.city.$invalid">
+                            The first name is empty or incorrect format.
+                        </span>
+                </p>
+                <br>
+            </div>
+        </div>
+        <div class="userForm">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Departure Date:</label></div>
+                <div class="col-md-5">
+                    <p class="input-group">
+                        <input type="text" uib-datepicker-popup class="form-control" ng-model="pass.ddt" name="ddt"
+                               is-open="main.opened" close-text="Close" datepicker-options="dateOptions"
+                               placeholder="YYYY-DD-MM" ng-required/>
+                        <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="$event.preventDefault();
+                    $event.stopPropagation(); main.opened = true"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <span class="text-danger"
+              ng-show="userForm.ddt.$touched && userForm.ddt.$invalid">
+                            The Departure date is in incorrect format.
+                        </span> <br>
+
+        <div class="userForm">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Return Date:</label></div>
+                <div class="col-md-5">
+                    <p class="input-group">
+                        <input type="text" uib-datepicker-popup class="form-control" datepicker-options="dateOptions"
+                               ng-model="pass.rdt" name="rdt"
+                               is-open="main1.opened" close-text="Close" placeholder="YYYY-DD-MM"/><span
+                            class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="$event.preventDefault();
+                    $event.stopPropagation(); main1.opened = true"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+                    </p>
+                    <span class="text-danger"
+                          ng-show="userForm.rdt.$touched && userForm.rdt.$invalid">
+                            The Return date is in incorrect format.
+                        </span><br>
+                </div>
+
+            </div>
+        </div>
+    </form>
+    <button value="submit" ng-click="addinfo(pass)" ui-sref="app.book-my-ticket.step-three" class="btn btn-success"
+            ng-disabled="userForm.$invalid">
+        Next
+    </button>
+</div>
+</body>
