@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
 <body>
 <div class="card">
-    <h1>Step One</h1>
+    <h1>Personal Details</h1>
     <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
 
         <div class="form-group">
@@ -16,7 +10,7 @@
                 <div class="col-md-4 col-form-label">
                     <input type="text" class="form-control" name="frstname" required ng-model="pass.frstName"
                            placeholder="First Name"/>
-                        <span class="text-danger"
+                        <span class="text-danger text-bg"
                               ng-show="userForm.frstname.$touched && userForm.frstname.$invalid">
                             The First name is empty or incorrect format.
                         </span><br>
@@ -30,7 +24,7 @@
                 <div class="col-md-4">
                     <input type="text" class="form-control" name="lastName" ng-model="pass.lastName" placeholder="Last Name"
                            required/>
-                           <span class="text-danger"
+                           <span class="text-danger text-bg"
                               ng-show="userForm.lastName.$touched && userForm.lastName.$invalid">
                             The Last name is empty or incorrect format.
                         </span>
@@ -47,8 +41,8 @@
                 </div>
                 <div class="col-md-4">
                     <input type="text" placeholder="Contact No" name="ContactNo" class="form-control"
-                           maxlength="10" required ng-model="pass.phno"/>
-                       <span class="text-danger" ng-show="userForm.ContactNo.$touched && userForm.ContactNo.$invalid">
+                           maxlength="10" minlength="10" required ng-model="pass.phno" ng-keypress="filterValue($event)"/>
+                       <span class="text-danger text-bg" ng-show="userForm.ContactNo.$touched && userForm.ContactNo.$invalid">
                             The phone number is incorrect format.
                         </span><br>
                 </div>
@@ -63,7 +57,7 @@
                 <div class="col-md-4">
                     <input type="email" placeholder="Email Address" name="email" class="form-control " required
                            ng-model="pass.email"/>
-                        <span class="text-danger" ng-show="userForm.email.$touched && userForm.email.$invalid">
+                        <span class="text-danger text-bg" ng-show="userForm.email.$touched && userForm.email.$invalid">
                             The email is empty or incorrect format.
                         </span><br>
                 </div>

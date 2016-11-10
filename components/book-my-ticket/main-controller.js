@@ -4,6 +4,7 @@
 export default function mainController($scope, $http, myService) {
     'ngInject';
 
+
      $scope.pass = [];
     $scope.addinfo = function (info) {
         $scope.pass.push();
@@ -15,13 +16,19 @@ export default function mainController($scope, $http, myService) {
         $scope.mailContent = show;
     };
 
+    // number validation
+    $scope.filterValue = function ($event) {
+        if (isNaN(String.fromCharCode($event.keyCode))) {
+            $event.preventDefault();
+        }
+    };
+
     $scope.countries = ['Alberta', 'British Columbia', 'Ontario', 'California', 'Florida', 
         'New York', 'Toronto', 'Hamilton', 'Los Angeles', 'San Francisco'];
 
   
     // To validate date
-
-      $scope.dateOptions = {
+     $scope.dateOptions = {
      dateDisabled: disabled,
      formatYear: 'yy',
      maxDate: new Date(2020, 5, 22),
@@ -36,7 +43,6 @@ export default function mainController($scope, $http, myService) {
      }
 
 // To send an Email ----------
-
     $scope.send = function () {
         $http({
             method: 'GET',
@@ -47,13 +53,9 @@ export default function mainController($scope, $http, myService) {
             '&startdt=' + $scope.pass.ddt +
             '&returndt=' + $scope.pass.rdt +
             '&mobile=' + $scope.pass.phno
-        })
-        $scope.pass.frstName='';
-        $scope.pass.lastName='';
-        $scope.pass.phno='';
-        $scope.pass.email='';
-        $scope.pass.ddt='';
-        $scope.pass.rdt='';
+        });
+        // to empty input boxes
+        $scope.pass='';
     };
 
 
